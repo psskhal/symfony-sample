@@ -1,0 +1,1 @@
+<?php echo $this->getI18NString('create.title', 'create '.$this->getModuleName()) ?>

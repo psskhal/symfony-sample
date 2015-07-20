@@ -1,0 +1,26 @@
+soap:
+  index: { enable: false }
+  loginRequired: { enable: false }
+  login: { enable: false }
+  logout: { enable: false }
+  signup: { enable: false }
+  lostPassword: { enable: false }
+  confirmEmail: { enable: false }
+  account: { enable: false }
+  profile: { enable: false }
+  password: { enable: false }
+  inviteWebmail: { enable: false }
+  invite: { enable: false }
+  search: { enable: false }
+  receipt: { enable: false }
+  photo: { enable: false }
+  photoDel: { enable: false }
+  accessCode: { enable: false }
+  addQuickContact: { enable: false }
+  delQuickContacts: { enable: false }
+  quickContacts: { enable: false }
+  cancelJotag: { enable: false }
+  addInterest: { enable: false }
+  delInterest: { enable: false }
+  eu: { enable: true, parameter: {  }, result: null, render: false }
+  setLanguage: { enable: false }

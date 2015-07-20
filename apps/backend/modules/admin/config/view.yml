@@ -1,0 +1,3 @@
+loginSuccess:
+  has_layout:  no
+  stylesheets: [sf_admin/login]

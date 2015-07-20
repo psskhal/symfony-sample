@@ -1,0 +1,16 @@
+searchError:
+  stylesheets:    [contact]
+
+viewSuccess:
+
+viewError:
+  stylesheets:    [contact]
+
+showCaptchaSuccess:
+  has_layout: no  
+  
+vcardSuccess:
+  has_layout: no
+
+myactionSuccess:
+  has_layout: no

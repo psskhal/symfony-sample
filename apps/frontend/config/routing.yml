@@ -1,0 +1,249 @@
+# default rules
+homepage:
+  url:   /
+  param: { module: page, action: index, page: index }
+
+page:
+  url:   /page/:page
+  param: { module: page, action: index }
+
+article:
+  url: /article/:id/:slug
+  param: { module: page, action: article }
+
+api:
+  url:   /api/:action
+  param: { module: api }
+
+login:
+  url:   /login
+  param: { module: user, action: login }
+
+login_badge:
+  url:   /login/badge
+  param: { module: user, action: login, sf_format: badge }
+
+login_redirect:
+  url:   /login/redirect/:redirect
+  param: { module: user, action: login }
+
+login_badge_redirect:
+  url:   /login/redirect/:redirect/badge
+  param: { module: user, action: login, sf_format: badge }
+
+logout:
+  url:   /logout
+  param: { module: user, action: logout }
+
+signup_invite:
+  url:   /signup/:invite_id
+  param: { module: user, action: signup }
+
+signup:
+  url:   /signup
+  param: { module: user, action: signup }
+
+forgotpwd:
+  url:   /lostpassword
+  param: { module: user, action: lostPassword }
+
+confirm_email:
+  url:   /confirm/:confirm_code
+  param: { module: user, action: confirmEmail }
+
+error_module:
+  url:   /error/:action
+  param: { module: error }
+
+account:
+  url:   /account
+  param: { module: user, action: account }
+
+profile:
+  url:   /profile
+  param: { module: user, action: profile }
+
+password:
+  url:   /password
+  param: { module: user, action: password }
+
+invite:
+  url:   /invites
+  param: { module: user, action: invite }
+
+invite_webmail:
+  url:   /invites/webmail
+  param: { module: user, action: inviteWebmail }
+
+contacts:
+  url:   /contacts
+  param: { module: contact, action: index }
+
+contact_new:
+  url:   /contacts/:action/:do
+  param: { module: contact }
+  
+contact_edit:
+  url:   /contacts/:action/:id/:do
+  param: { module: contact, do: edit }
+
+search:
+  url:   /search
+  param: { module: jotag, action: search }
+
+search_result:
+  url:   /search/:search
+  param: { module: jotag, action: search }
+
+buy:
+  url:   /get
+  param: { module: buy, action: buy }
+
+buy_step2:
+  url:   /get/tag/:jotag
+  param: { module: buy, action: buy }
+
+buy_cancel:
+  url:   /get/cancel
+  param: { module: buy, action: cancel }
+
+buy_process:
+  url:   /get/process
+  param: { module: buy, action: process }
+
+buy_ipn:
+  url:   /get/ipn
+  param: { module: buy, action: IPN }
+
+#redeem:
+#  url:   /redeem
+#  param: { module: buy, action: redeem }
+
+redeem_step2:
+  url:   /redeem/tag/:jotag
+  param: { module: buy, action: redeem }
+
+photo:
+  url:   /photo
+  param: { module: user, action: photo }
+
+photo_del:
+  url:   /photo/del
+  param: { module: user, action: photoDel }
+
+access_code:
+  url:   /user/access/:search
+  param: { module: user, action: accessCode }
+
+add_quick_contact:
+  url:   /quickcontacts/add/:jotag
+  param: { module: user, action: addQuickContact }
+
+del_quick_contacts:
+  url:   /quickcontacts/del
+  param: { module: user, action: delQuickContacts } 
+
+quick_contacts:
+  url:   /quickcontacts
+  param: { module: user, action: quickContacts }
+
+add_interest:
+  url:   /interest/add/:jotag
+  param: { module: user, action: addInterest }
+
+del_interest:
+  url:   /interest/del/:jotag
+  param: { module: user, action: delInterest }
+
+switch_language:
+  url:   /language/:culture
+  param: { module: user, action: setLanguage }
+
+switch_language_form:
+  url:   /language
+  param: { module: user, action: setLanguage }
+
+vcard:
+  url:   /tag/:jotag/vcard
+  param: { module: jotag, action: vcard, sf_format: vcf }
+
+receipts:
+  url:   /tag/:jotag/details
+  param: { module: jotag, action: receipt }
+
+cancel_jotag:
+  url:   /tag/:jotag/cancel
+  param: { module: jotag, action: cancel }
+
+configure:
+  url:   /tag/:jotag/configure
+  param: { module: jotag, action: configure }
+
+jotag_photo_del:
+  url:   /tag/:jotag/photo/del
+  param: { module: jotag, action: photoDel }
+
+jotag_photo:
+  url:   /tag/:jotag/photo
+  param: { module: jotag, action: photo }
+
+jotag_badge:
+  url:   /tag/:jotag/cbadge
+  param: { module: jotag, action: badge }
+
+jotag_privacy:
+  url:   /tag/:jotag/privacy
+  param: { module: jotag, action: privacy }
+
+view_jotag:
+  url:   /tag/:jotag
+  param: { module: jotag, action: view }
+
+view_jotag_badge:
+  url:   /tag/:jotag/badge
+  param: { module: jotag, action: view, sf_format: badge }
+
+badge_comm:
+  url:   /badge/comm
+  param: { module: badge, action: comm }
+ 
+badge_get:
+  url:   /badge/:jotag.:sf_format
+  param: { module: badge, action: badge, sf_format: js }
+
+accept_auth_request:
+  url:   /tag/:jotag/auth/accept/:user
+  param: { module: jotag, action: acceptRequest }
+
+discard_auth_request:
+  url:   /tag/:jotag/auth/discard/:user
+  param: { module: jotag, action: discardRequest }
+  
+reject_auth_request:
+  url:   /tag/:jotag/auth/reject/:user
+  param: { module: jotag, action: rejectRequest }
+
+manage_auth_request:
+  url:   /tag/:jotag/auth
+  param: { module: jotag, action: manageRequests }
+
+asset_css:
+  url:   /css/i18n/:asset.css
+  param: { module: asset, action: css, sf_format: css }  
+
+next_option:
+  url:   /next/nextOption/:jotag
+  param: { module: jotag, action: nextOption } 
+
+next_option_back:
+  url:   /back/nextOption/:jotag
+  param: { module: jotag, action: backOption } 
+
+popover:
+  url:   /contact/gettingStarted
+  param: { module: contact, action: gettingStarted } 
+
+fbpost:
+  url:   /user/updateCredit
+  param: { module: user, action: updateCredit } 
+  

@@ -1,0 +1,50 @@
+generator:
+  class:              sfAdvancedAdminGenerator
+  param:
+    model_class:      Article
+    theme:            default
+    css:              sf_admin/main
+    
+    list:
+      title:          Article manager
+      sort:           [published_at,desc]
+      filters:        [title, language_id]
+      display:        [id,=title,language,_is_active,updated_at,published_at]
+      fields:
+        is_active:        { name: Published }
+        updated_at:       { name: Last update }
+      max_per_page:       20
+      actions:
+        _create:         { name: New }
+      object_actions:
+        edit:            { action: edit, icon: %sf_admin_web_dir%/images/edit_icon.png, name: Edit this article, params: title='Edit this article' }
+        delete:          { action: delete, icon: %sf_admin_web_dir%/images/delete_icon.png, name: Delete this article, params: title='Delete this article' confirm='Are you sure you wish to delete this article?' }
+
+    edit:
+      title:             Article manager: edit
+      display:
+        "Details":       [language_id, is_active, published_at]
+        "Article":       [title, summary, body]
+      fields:
+        body:            { params: "class=article_body, cols=150, rows=20" }
+        title:           { params: size=70 }
+        summary:         { params: "cols=100, rows=5" }
+        is_active:       { name: Published }
+      actions:
+        _delete:         { name: Delete }
+        _list:           { name: Close }
+        _save_and_list:  { name: Save }
+
+    create:
+      title:             Article manager: new
+      display:
+        "Details":       [language_id, is_active, published_at]
+        "Article":       [title, summary, body]
+      fields:
+        body:            { params: "class=article_body, cols=150, rows=20" }
+        title:           { params: size=70 }
+        summary:         { params: cols=200 }
+        is_active:       { name: Published }
+      actions:
+        _list:           { name: Close }
+        _save_and_list:  { name: Save }

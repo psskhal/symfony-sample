@@ -1,0 +1,1 @@
+<?php echo link_to($article->getIsActive() ? image_tag(sfConfig::get('sf_admin_web_dir').'/images/tick.png') : image_tag('sf_admin/x.png'),'article/toggleActive?id='.$article->getId(),array('title'=>$article->getIsActive()?'Un-publish this article':'Publish this article')) ?>

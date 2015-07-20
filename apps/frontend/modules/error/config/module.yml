@@ -1,0 +1,7 @@
+all:
+  is_internal: false
+soap:
+  login: { enable: false }
+  error404: { enable: false }
+  secure: { enable: false }
+  disabled: { enable: false }

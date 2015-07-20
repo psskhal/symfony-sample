@@ -1,0 +1,15 @@
+soap:
+  search: { enable: false }
+  view: { enable: false }
+  receipt: { enable: false }
+  cancel: { enable: false }
+  configure: { enable: false }
+  vcard: { enable: false }
+  photo: { enable: false }
+  photoDel: { enable: false }
+  privacy: { enable: false }
+  acceptRequest: { enable: false }
+  rejectRequest: { enable: false }
+  discardRequest: { enable: false }
+  manageRequests: { enable: false }
+  showCaptcha: { enable: false }

@@ -1,0 +1,8 @@
+<POLICY name="amznPolicy" discuri="http://jotag.barros.ws/page/privacy">
+	<ENTITY>
+		<DATA-GROUP>
+			<DATA ref="#business.name">JoTAG</DATA>
+			<DATA ref="#business.contact-info.online.uri">http://jotag.barros.ws/</DATA>
+		</DATA-GROUP>
+	</ENTITY>
+</POLICY> 

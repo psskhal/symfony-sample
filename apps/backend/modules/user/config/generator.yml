@@ -1,0 +1,35 @@
+generator:
+  class:              sfAdvancedAdminGenerator
+  param:
+    model_class:      User
+    theme:            default
+    css:              sf_admin/main
+    
+
+    list:
+      title:          User manager
+      sort:           [ created_at, desc ]
+      filters:        [ _name, _email ]
+      display:        [id, =primary_email, first_name, last_name, created_at]
+      fields:
+        user_id:      { name: ID }
+        created_at:   { name: Signup date, params: date_format='MM/dd/yyyy' }
+      max_per_page:   10
+      actions:
+        _create:      { name: New }
+      object_actions:
+        edit:         { action: edit, icon: %sf_admin_web_dir%/images/edit_icon.png, name: Edit this user, params: title='Edit this user' }
+        delete:       { action: delete, icon: %sf_admin_web_dir%/images/delete_icon.png, name: Delete this user, params: title='Delete this user' confirm='Are you sure you wish to delete this user?' }
+
+    edit:
+      title:             User manager: edit
+      actions:
+        _delete:         { name: Delete }
+        _list:           { name: Close }
+        _save_and_list:  { name: Save }
+
+    create:
+      title:             User manager: new
+      actions:
+        _list:           { name: Close }
+        _save_and_list:  { name: Save }

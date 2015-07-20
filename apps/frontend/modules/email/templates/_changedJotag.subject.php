@@ -1,0 +1,1 @@
+JoTAG "<?php echo $jotag->getJotag() ?>" has updated infomration

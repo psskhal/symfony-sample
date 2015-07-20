@@ -1,0 +1,58 @@
+account:
+  is_secure:    on
+  credentials:  subscriber
+
+logout:
+  is_secure:    on
+  credentials:  subscriber
+
+profile:
+  is_secure:    on
+  credentials:  subscriber
+
+password:
+  is_secure:    on
+  credentials:  subscriber
+
+invite:
+  is_secure:    on
+  credentials:  subscriber
+
+inviteWebmail:
+  is_secure:    on
+  credentials:  subscriber
+
+photo:
+  is_secure:    on
+  credentials:  subscriber
+
+photoDel:
+  is_secure:    on
+  credentials:  subscriber
+
+accessCode:
+  is_secure:    on
+  credentials:  subscriber
+
+addQuickContact:
+  is_secure:    on
+  credentials:  subscriber
+
+delQuickContacts:
+  is_secure:    on
+  credentials:  subscriber
+
+quickContacts:
+  is_secure:    on
+  credentials:  subscriber
+
+addInterest:
+  is_secure:    on
+  credentials:  subscriber
+
+delInterest:
+  is_secure:    on
+  credentials:  subscriber
+
+all:
+  is_secure:    off

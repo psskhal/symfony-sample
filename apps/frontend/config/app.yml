@@ -1,0 +1,26 @@
+all:
+  general:
+    base_url: 192.168.0.150/jotag/
+    base_path: /
+
+  importer:
+    url: http://projects.barros.ws/jotag/extra/importer/my%s.php
+
+  rememberme:
+    cookie_name: jtRemember
+    expiration_age: 1296000 # 15 days
+
+
+#
+# ALSO UPDATE FILES:
+#  - web/js/sf_admin/theme.js
+#  - web/js/tooltip/tip_balloon.js
+#
+
+#
+# DO NOT CHANGE VALUES BELLOW
+#
+soap:
+  enable_soap_parameter: on
+  ck_web_service_plugin:
+    wsdl: soap.wsdl

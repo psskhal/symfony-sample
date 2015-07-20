@@ -1,0 +1,1 @@
+Your JoTAG was removed from your account

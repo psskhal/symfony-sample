@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jotag</title>
+<script language="JavaScript1.1">
+<!-- begin hiding
+
+/*
+Preload Image With Update Bar Script (By Marcin Wojtowicz [one_spook@hotmail.com])
+Submitted to and permission granted to Dynamicdrive.com to feature script in it's archive
+For full source code to this script and 100's more, visit http://dynamicdrive.com
+*/
+
+// You may modify the following:
+	var locationAfterPreload = "http://dynamicdrive.com" // URL of the page after preload finishes
+	var lengthOfPreloadBar = 150 // Length of preload bar (in pixels)
+	var heightOfPreloadBar = 15 // Height of preload bar (in pixels)
+	// Put the URLs of images that you want to preload below (as many as you want)
+	var yourImages = new Array("http://dev.uba-solutions.com/jotag/web/images/jotag/headerbg.jpg","http://dev.uba-solutions.com/jotag/web/images/jotag/bodybg.jpg", "http://dev.uba-solutions.com/jotag/web/images/jotag/footerbg.jpg")
+
+// Do not modify anything beyond this point!
+if (document.images) {
+	var dots = new Array() 
+	//dots[0] = new Image(1,1)
+	//dots[0].src = "black.gif" // default preloadbar color (note: You can substitute it with your image, but it has to be 1x1 size)
+	//dots[1] = new Image(1,1)
+	//dots[1].src = "blue.gif" // color of bar as preloading progresses (same note as above)
+	var preImages = new Array(),coverage = Math.floor(lengthOfPreloadBar/yourImages.length),currCount = 0
+	var loaded = new Array(),i,covered,timerID
+	var leftOverWidth = lengthOfPreloadBar%coverage
+}
+function loadImages() { 
+	for (i = 0; i < yourImages.length; i++) { 
+		preImages[i] = new Image()
+		preImages[i].src = yourImages[i]
+	}
+	for (i = 0; i < preImages.length; i++) { 
+		loaded[i] = false
+	}
+	checkLoad()
+}
+function checkLoad() {
+	if (currCount == preImages.length) { 
+		//location.replace(locationAfterPreload)
+		return
+	}
+	for (i = 0; i <= preImages.length; i++) {
+		if (loaded[i] == false && preImages[i].complete) {
+			loaded[i] = true
+			//eval("document.img" + currCount + ".src=dots[1].src")
+			currCount++
+		}
+	}
+	timerID = setTimeout("checkLoad()",10) 
+}
+// end hiding -->
+</script>
+
+<script language="JavaScript1.1">
+<!-- begin hiding
+// It is recommended that you put a link to the target URL just in case if the visitor wants to skip preloading
+// for some reason, or his browser doesn't support JavaScript image object.
+if (document.images) {
+	/*var preloadBar = ''
+	for (i = 0; i < yourImages.length-1; i++) {
+		preloadBar += '<img src="' + dots[0].src + '" width="' + coverage + '" height="' + heightOfPreloadBar + '" name="img' + i + '" align="absmiddle">'
+	}
+	preloadBar += '<img src="' + dots[0].src + '" width="' + (leftOverWidth+coverage) + '" height="' + heightOfPreloadBar + '" name="img' + (yourImages.length-1) + '" align="absmiddle">'*/
+	//document.write(preloadBar)
+	loadImages()
+}
+//document.write('<p><small><a href="javascript:window.location=locationAfterPreload">Skip Preloading</a>  |  <a href="http://dynamicdrive.com/">Script Credits</a></small></p>')
+// end hiding -->
+</script>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="img/iepngfix_tilebg.js"></script> 
+</head>
+<body>
+<div id="headerwrapper">
+	<div id="header">
+		<h1 class="pos2"><a href="" class="png">Jotag</a></h1>
+		<div class="top_menu">
+			<a href="" class="home">Home</a>
+			<a href="">My Account</a>
+			<a href="">Contact Info</a>
+			<a href="">Quick Contacts</a>
+			<a href="">Invites</a>
+			<a href="">Sign Out</a>
+		</div>
+		<div class="title_header">
+			<h2>Invite Friends</h2>
+		</div>
+	</div>
+  <!--END OF HEADER-->
+</div>
+<!--END OF HEADERWRAPPER-->
+<div id="inner_content">
+	<div id="menu"></div>
+	<div id="page">
+	
+		<div class="title">
+			<h1>Jotag is free to use. Invite friends to join.</h1>
+			<p>Like Jotag? Help us spread the word about it. Send invitations to your friends via email.</p>
+		</div>		
+		
+		<div class="invite_friends">
+			<h2>Option 1: Retrieve addresses from your email account<br />and select which friends will receive invitation:</h2>
+			<img src="img/email-logos.png" alt="" class="png" />
+			
+			<form action="" class="generic">
+				<label>Email address</label> <label>Password</label>
+				<br />
+				<input value="" /> <input value="" /> <button>OK</button>
+				<br />
+			</form>
+			
+			<h2>Option 2: Enter emails manually:</h2>
+			
+			<form action="" class="generic">
+				<label>Name</label> <label>Email</label>
+				<br />
+				<input value="" /> <input value="" />
+				<br />
+				<input value="" /> <input value="" />
+				<br />
+				<input value="" /> <input value="" />
+				<br />
+				<p><a href="">[More Emails]</a></p>
+				<br />
+				<button>INVITE FRIENDS</button>
+			</form>
+			
+		</div>
+		
+	<br clear="all" />
+	
+	</div>
+	<div id="pagebottom"></div>
+</div>
+<!--END OF CONTENT-->
+<div id="footerwrapper">
+	<div id="footer" class="png">
+        <div id="about">
+        <img src="img/footer-whatabout.jpg" width="224" height="56" alt="" />
+        <p>The idea of Jotag is to manage all your contact details, both online and offline with one simple id that you choose and personalise.</p>
+		<p>It is platform independent so you can share it by voice print, media and whatever comes to your mind.</p>
+        </div>
+        <div id="news">
+        	<div id="newscontent">
+            <p><a href="#">“The best thing since Twitter” - <strong><em>Mashable</em></strong></a></p>
+            <p><a href="#">“The days of paper cards are definitely gone” - <strong><em>Guy Kawasaki</em></strong></a></p>
+            </div>
+        </div>
+        <div id="languages">
+        <img src="img/footer-languages.jpg" alt="languages" />
+          <form action="languagechange.php" method="get">
+            <select name='myfield' onchange='this.form.submit()'>
+              <option value="english">English</option>
+              <option value="port">Portuguese</option>
+            </select>
+          </form>
+        </div>
+        <div id="links">
+            <img src="img/footer-links.jpg" width="54" height="24" alt="links" />
+            <ul>
+            <li><a href="#">About Jotag</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Press Releases</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+    </div>
+	<!--END OF FOOTER-->
+</div>
+<!--END OF FOOTERWRAPPER-->
+</body>
+</html>

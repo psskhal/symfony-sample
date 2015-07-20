@@ -1,0 +1,34 @@
+receipt:
+  is_secure:    on
+  credentials:  subscriber
+
+cancel:
+  is_secure:    on
+  credentials:  subscriber
+
+configure:
+  is_secure:    on
+  credentials:  subscriber
+
+photo:
+  is_secure:    on
+  credentials:  subscriber
+
+photoDel:
+  is_secure:    on
+  credentials:  subscriber
+
+acceptRequest:
+  is_secure:    on
+  credentials:  subscriber
+
+rejectRequest:
+  is_secure:    on
+  credentials:  subscriber
+
+manageRequests:
+  is_secure:    on
+  credentials:  subscriber
+
+all:
+  is_secure:    off

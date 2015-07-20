@@ -1,0 +1,1 @@
+<?php if($days <= 0): ?>Your JoTAG expired<?php else: ?>Your JoTAG is about to expire<?php endif; ?>

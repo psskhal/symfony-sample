@@ -1,0 +1,1 @@
+<?php echo $badge->getHTML($jotag,$contacts,$authorized,$reload); ?>

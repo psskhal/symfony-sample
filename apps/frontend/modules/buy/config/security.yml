@@ -1,0 +1,14 @@
+buy:
+  is_secure:    on
+  credentials:  subscriber
+
+cancel:
+  is_secure:    on
+  credentials:  subscriber
+
+redeem:
+  is_secure:    on
+  credentials:  subscriber
+
+all:
+  is_secure:    off

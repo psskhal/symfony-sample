@@ -1,0 +1,1 @@
+Your invite was accepted

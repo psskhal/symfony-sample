@@ -1,0 +1,1 @@
+Your request to view jotag <?php echo $jotag ?> was accepted!

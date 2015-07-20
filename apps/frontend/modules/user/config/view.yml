@@ -1,0 +1,5 @@
+loginSuccess:
+  layout: layout_simple
+
+signupSuccess:
+  layout: layout_simple

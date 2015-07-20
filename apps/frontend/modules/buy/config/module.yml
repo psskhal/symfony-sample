@@ -1,0 +1,6 @@
+soap:
+  redeem: { enable: false }
+  buy: { enable: false }
+  cancel: { enable: false }
+  process: { enable: false }
+  iPN: { enable: false }

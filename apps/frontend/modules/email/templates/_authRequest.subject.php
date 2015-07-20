@@ -1,0 +1,1 @@
+<?php echo $user->getFirstName() ?> requested to view your JoTAG <?php echo $jotag ?>

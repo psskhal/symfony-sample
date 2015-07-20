@@ -1,0 +1,1357 @@
+<?xml version="1.0"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap" targetNamespace="http://projects.barros.ws/jotag/" xmlns:tns="http://projects.barros.ws/jotag/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://projects.barros.ws/jotag/">
+      <xsd:complexType name="SoapLanguage">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="culture" type="xsd:string"/>
+          <xsd:element name="name" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapLanguage">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapLanguage[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapProfile">
+        <xsd:sequence>
+          <xsd:element name="first_name" type="xsd:string"/>
+          <xsd:element name="last_name" type="xsd:string"/>
+          <xsd:element name="language_id" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapLogin">
+        <xsd:sequence>
+          <xsd:element name="email" type="xsd:string"/>
+          <xsd:element name="password" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapPassword">
+        <xsd:sequence>
+          <xsd:element name="oldpassword" type="xsd:string"/>
+          <xsd:element name="password" type="xsd:string"/>
+          <xsd:element name="rpassword" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapSignup">
+        <xsd:sequence>
+          <xsd:element name="first_name" type="xsd:string"/>
+          <xsd:element name="last_name" type="xsd:string"/>
+          <xsd:element name="email" type="xsd:string"/>
+          <xsd:element name="password" type="xsd:string"/>
+          <xsd:element name="rpassword" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapJotag">
+        <xsd:sequence>
+          <xsd:element name="jotag" type="xsd:string"/>
+          <xsd:element name="status" type="xsd:int"/>
+          <xsd:element name="permanent" type="xsd:boolean"/>
+          <xsd:element name="credit" type="xsd:boolean"/>
+          <xsd:element name="expiration_date" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapJotag">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapJotag[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapQuickContact">
+        <xsd:sequence>
+          <xsd:element name="jotag" type="xsd:string"/>
+          <xsd:element name="user" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapQuickContact">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapQuickContact[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfstring">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapInterest">
+        <xsd:sequence>
+          <xsd:element name="jotag" type="xsd:string"/>
+          <xsd:element name="available" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapInterest">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapInterest[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapJotagPrivacy">
+        <xsd:sequence>
+          <xsd:element name="pin" type="xsd:string"/>
+          <xsd:element name="message" type="xsd:string"/>
+          <xsd:element name="captcha" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapJotagPrivacyResult">
+        <xsd:sequence>
+          <xsd:element name="allowed" type="xsd:boolean"/>
+          <xsd:element name="privacy_mode" type="xsd:string"/>
+          <xsd:element name="pin_hint" type="xsd:string"/>
+          <xsd:element name="auth_stage" type="xsd:int"/>
+          <xsd:element name="captcha" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapEmailDetails">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="is_primary" type="xsd:boolean"/>
+          <xsd:element name="is_confirmed" type="xsd:boolean"/>
+          <xsd:element name="actual_email" type="xsd:string"/>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="email" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapEmailDetails">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapEmailDetails[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapAddressDetails">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="country_name" type="xsd:string"/>
+          <xsd:element name="state_name" type="xsd:string"/>
+          <xsd:element name="city_name" type="xsd:string"/>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="company" type="xsd:string"/>
+          <xsd:element name="tax_id" type="xsd:string"/>
+          <xsd:element name="line1" type="xsd:string"/>
+          <xsd:element name="line2" type="xsd:string"/>
+          <xsd:element name="postcode" type="xsd:string"/>
+          <xsd:element name="country_id" type="xsd:int"/>
+          <xsd:element name="state_id" type="xsd:int"/>
+          <xsd:element name="city_id" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapAddressDetails">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapAddressDetails[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapPhoneDetails">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="kind" type="xsd:int"/>
+          <xsd:element name="number" type="xsd:string"/>
+          <xsd:element name="exten" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapPhoneDetails">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapPhoneDetails[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapUrlDetails">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="url" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapUrlDetails">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapUrlDetails[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapIMDetails">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="identifier" type="xsd:string"/>
+          <xsd:element name="network" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapIMDetails">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapIMDetails[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapSNDetails">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="identifier" type="xsd:string"/>
+          <xsd:element name="network" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapSNDetails">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapSNDetails[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapJotagContacts">
+        <xsd:sequence>
+          <xsd:element name="emails" type="tns:ArrayOfSoapEmailDetails"/>
+          <xsd:element name="addresses" type="tns:ArrayOfSoapAddressDetails"/>
+          <xsd:element name="phones" type="tns:ArrayOfSoapPhoneDetails"/>
+          <xsd:element name="urls" type="tns:ArrayOfSoapUrlDetails"/>
+          <xsd:element name="ims" type="tns:ArrayOfSoapIMDetails"/>
+          <xsd:element name="sns" type="tns:ArrayOfSoapSNDetails"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapViewJotagResult">
+        <xsd:sequence>
+          <xsd:element name="privacy" type="tns:SoapJotagPrivacyResult"/>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="picture" type="xsd:string"/>
+          <xsd:element name="contacts" type="tns:SoapJotagContacts"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapUrl">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="url" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapPhone">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="kind" type="xsd:int"/>
+          <xsd:element name="number" type="xsd:string"/>
+          <xsd:element name="exten" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapSN">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="identifier" type="xsd:string"/>
+          <xsd:element name="network" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapIM">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="identifier" type="xsd:string"/>
+          <xsd:element name="network" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapEmail">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="email" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapGeo">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="name" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapGeo">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapGeo[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapAddress">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:int"/>
+          <xsd:element name="custom_type" type="xsd:string"/>
+          <xsd:element name="company" type="xsd:string"/>
+          <xsd:element name="tax_id" type="xsd:string"/>
+          <xsd:element name="line1" type="xsd:string"/>
+          <xsd:element name="line2" type="xsd:string"/>
+          <xsd:element name="postcode" type="xsd:string"/>
+          <xsd:element name="country_id" type="xsd:int"/>
+          <xsd:element name="state_id" type="xsd:int"/>
+          <xsd:element name="city_id" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfinteger">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:int[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapJotagConfig">
+        <xsd:sequence>
+          <xsd:element name="phone" type="tns:ArrayOfinteger"/>
+          <xsd:element name="url" type="tns:ArrayOfinteger"/>
+          <xsd:element name="im" type="tns:ArrayOfinteger"/>
+          <xsd:element name="sn" type="tns:ArrayOfinteger"/>
+          <xsd:element name="address" type="tns:ArrayOfinteger"/>
+          <xsd:element name="email" type="tns:ArrayOfinteger"/>
+          <xsd:element name="link_by_default" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SoapType">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="type" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapType">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapType[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SoapNetwork">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="network" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSoapNetwork">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:SoapNetwork[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:portType name="soapPortType">
+    <wsdl:operation name="soap_getLanguages" parameterOrder="">
+      <wsdl:input message="tns:soap_getLanguagesRequest"/>
+      <wsdl:output message="tns:soap_getLanguagesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getProfile" parameterOrder="">
+      <wsdl:input message="tns:soap_getProfileRequest"/>
+      <wsdl:output message="tns:soap_getProfileResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getCurrentLanguage" parameterOrder="">
+      <wsdl:input message="tns:soap_getCurrentLanguageRequest"/>
+      <wsdl:output message="tns:soap_getCurrentLanguageResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_setCurrentLanguage" parameterOrder="language_id">
+      <wsdl:input message="tns:soap_setCurrentLanguageRequest"/>
+      <wsdl:output message="tns:soap_setCurrentLanguageResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_saveProfile" parameterOrder="profile">
+      <wsdl:input message="tns:soap_saveProfileRequest"/>
+      <wsdl:output message="tns:soap_saveProfileResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_login" parameterOrder="login">
+      <wsdl:input message="tns:soap_loginRequest"/>
+      <wsdl:output message="tns:soap_loginResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_logout" parameterOrder="">
+      <wsdl:input message="tns:soap_logoutRequest"/>
+      <wsdl:output message="tns:soap_logoutResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_lostPassword" parameterOrder="email">
+      <wsdl:input message="tns:soap_lostPasswordRequest"/>
+      <wsdl:output message="tns:soap_lostPasswordResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_changePassword" parameterOrder="password">
+      <wsdl:input message="tns:soap_changePasswordRequest"/>
+      <wsdl:output message="tns:soap_changePasswordResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_signup" parameterOrder="signup">
+      <wsdl:input message="tns:soap_signupRequest"/>
+      <wsdl:output message="tns:soap_signupResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getJotags" parameterOrder="">
+      <wsdl:input message="tns:soap_getJotagsRequest"/>
+      <wsdl:output message="tns:soap_getJotagsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_cancelJotag" parameterOrder="jotag confirm_jotag agree">
+      <wsdl:input message="tns:soap_cancelJotagRequest"/>
+      <wsdl:output message="tns:soap_cancelJotagResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getQuickContacts" parameterOrder="">
+      <wsdl:input message="tns:soap_getQuickContactsRequest"/>
+      <wsdl:output message="tns:soap_getQuickContactsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_delQuickContacts" parameterOrder="jotags">
+      <wsdl:input message="tns:soap_delQuickContactsRequest"/>
+      <wsdl:output message="tns:soap_delQuickContactsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_addQuickContact" parameterOrder="jotag">
+      <wsdl:input message="tns:soap_addQuickContactRequest"/>
+      <wsdl:output message="tns:soap_addQuickContactResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getInterests" parameterOrder="">
+      <wsdl:input message="tns:soap_getInterestsRequest"/>
+      <wsdl:output message="tns:soap_getInterestsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_delInterest" parameterOrder="jotag confirm_jotag">
+      <wsdl:input message="tns:soap_delInterestRequest"/>
+      <wsdl:output message="tns:soap_delInterestResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_addInterest" parameterOrder="jotag confirm_jotag">
+      <wsdl:input message="tns:soap_addInterestRequest"/>
+      <wsdl:output message="tns:soap_addInterestResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getCredits" parameterOrder="">
+      <wsdl:input message="tns:soap_getCreditsRequest"/>
+      <wsdl:output message="tns:soap_getCreditsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_viewJotag" parameterOrder="jotag privacy">
+      <wsdl:input message="tns:soap_viewJotagRequest"/>
+      <wsdl:output message="tns:soap_viewJotagResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_redeem" parameterOrder="jotag confirm_jotag">
+      <wsdl:input message="tns:soap_redeemRequest"/>
+      <wsdl:output message="tns:soap_redeemResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getEmails" parameterOrder="">
+      <wsdl:input message="tns:soap_getEmailsRequest"/>
+      <wsdl:output message="tns:soap_getEmailsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getEmail" parameterOrder="id">
+      <wsdl:input message="tns:soap_getEmailRequest"/>
+      <wsdl:output message="tns:soap_getEmailResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getAddresses" parameterOrder="">
+      <wsdl:input message="tns:soap_getAddressesRequest"/>
+      <wsdl:output message="tns:soap_getAddressesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getAddress" parameterOrder="id">
+      <wsdl:input message="tns:soap_getAddressRequest"/>
+      <wsdl:output message="tns:soap_getAddressResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getSNs" parameterOrder="">
+      <wsdl:input message="tns:soap_getSNsRequest"/>
+      <wsdl:output message="tns:soap_getSNsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getSN" parameterOrder="id">
+      <wsdl:input message="tns:soap_getSNRequest"/>
+      <wsdl:output message="tns:soap_getSNResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getIMs" parameterOrder="">
+      <wsdl:input message="tns:soap_getIMsRequest"/>
+      <wsdl:output message="tns:soap_getIMsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getIM" parameterOrder="id">
+      <wsdl:input message="tns:soap_getIMRequest"/>
+      <wsdl:output message="tns:soap_getIMResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getPhones" parameterOrder="">
+      <wsdl:input message="tns:soap_getPhonesRequest"/>
+      <wsdl:output message="tns:soap_getPhonesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getPhone" parameterOrder="id">
+      <wsdl:input message="tns:soap_getPhoneRequest"/>
+      <wsdl:output message="tns:soap_getPhoneResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getUrls" parameterOrder="">
+      <wsdl:input message="tns:soap_getUrlsRequest"/>
+      <wsdl:output message="tns:soap_getUrlsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getUrl" parameterOrder="id">
+      <wsdl:input message="tns:soap_getUrlRequest"/>
+      <wsdl:output message="tns:soap_getUrlResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_saveUrl" parameterOrder="id url">
+      <wsdl:input message="tns:soap_saveUrlRequest"/>
+      <wsdl:output message="tns:soap_saveUrlResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_delUrl" parameterOrder="id">
+      <wsdl:input message="tns:soap_delUrlRequest"/>
+      <wsdl:output message="tns:soap_delUrlResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_savePhone" parameterOrder="id phone">
+      <wsdl:input message="tns:soap_savePhoneRequest"/>
+      <wsdl:output message="tns:soap_savePhoneResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_delPhone" parameterOrder="id">
+      <wsdl:input message="tns:soap_delPhoneRequest"/>
+      <wsdl:output message="tns:soap_delPhoneResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_saveSN" parameterOrder="id sn">
+      <wsdl:input message="tns:soap_saveSNRequest"/>
+      <wsdl:output message="tns:soap_saveSNResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_saveIM" parameterOrder="id im">
+      <wsdl:input message="tns:soap_saveIMRequest"/>
+      <wsdl:output message="tns:soap_saveIMResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_delSN" parameterOrder="id">
+      <wsdl:input message="tns:soap_delSNRequest"/>
+      <wsdl:output message="tns:soap_delSNResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_delIM" parameterOrder="id">
+      <wsdl:input message="tns:soap_delIMRequest"/>
+      <wsdl:output message="tns:soap_delIMResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_saveEmail" parameterOrder="id email">
+      <wsdl:input message="tns:soap_saveEmailRequest"/>
+      <wsdl:output message="tns:soap_saveEmailResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_delEmail" parameterOrder="id">
+      <wsdl:input message="tns:soap_delEmailRequest"/>
+      <wsdl:output message="tns:soap_delEmailResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getCountries" parameterOrder="">
+      <wsdl:input message="tns:soap_getCountriesRequest"/>
+      <wsdl:output message="tns:soap_getCountriesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getStates" parameterOrder="country_id">
+      <wsdl:input message="tns:soap_getStatesRequest"/>
+      <wsdl:output message="tns:soap_getStatesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getCities" parameterOrder="state_id">
+      <wsdl:input message="tns:soap_getCitiesRequest"/>
+      <wsdl:output message="tns:soap_getCitiesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_saveAddress" parameterOrder="id address">
+      <wsdl:input message="tns:soap_saveAddressRequest"/>
+      <wsdl:output message="tns:soap_saveAddressResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_delAddress" parameterOrder="id">
+      <wsdl:input message="tns:soap_delAddressRequest"/>
+      <wsdl:output message="tns:soap_delAddressResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getVcard" parameterOrder="jotag">
+      <wsdl:input message="tns:soap_getVcardRequest"/>
+      <wsdl:output message="tns:soap_getVcardResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getJotagConfig" parameterOrder="jotag">
+      <wsdl:input message="tns:soap_getJotagConfigRequest"/>
+      <wsdl:output message="tns:soap_getJotagConfigResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_configureJotag" parameterOrder="jotag display_name email address phone url im sn link_by_default">
+      <wsdl:input message="tns:soap_configureJotagRequest"/>
+      <wsdl:output message="tns:soap_configureJotagResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getTypes" parameterOrder="contact">
+      <wsdl:input message="tns:soap_getTypesRequest"/>
+      <wsdl:output message="tns:soap_getTypesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soap_getNetworks" parameterOrder="contact">
+      <wsdl:input message="tns:soap_getNetworksRequest"/>
+      <wsdl:output message="tns:soap_getNetworksResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soapBinding" type="tns:soapPortType">
+    <soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getLanguages">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getLanguages" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getProfile">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getProfile" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getCurrentLanguage">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getCurrentLanguage" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_setCurrentLanguage">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_setCurrentLanguage" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="language_id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_saveProfile">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_saveProfile" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="profile" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_login">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_login" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="login" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_logout">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_logout" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_lostPassword">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_lostPassword" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="email" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_changePassword">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_changePassword" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="password" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_signup">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_signup" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="signup" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getJotags">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getJotags" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_cancelJotag">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_cancelJotag" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag confirm_jotag agree" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getQuickContacts">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getQuickContacts" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_delQuickContacts">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_delQuickContacts" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotags" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_addQuickContact">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_addQuickContact" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getInterests">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getInterests" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_delInterest">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_delInterest" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag confirm_jotag" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_addInterest">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_addInterest" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag confirm_jotag" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getCredits">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getCredits" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_viewJotag">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_viewJotag" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag privacy" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_redeem">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_redeem" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag confirm_jotag" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getEmails">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getEmails" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getEmail">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getEmail" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getAddresses">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getAddresses" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getAddress">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getAddress" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getSNs">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getSNs" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getSN">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getSN" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getIMs">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getIMs" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getIM">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getIM" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getPhones">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getPhones" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getPhone">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getPhone" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getUrls">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getUrls" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getUrl">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getUrl" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_saveUrl">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_saveUrl" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id url" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_delUrl">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_delUrl" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_savePhone">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_savePhone" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id phone" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_delPhone">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_delPhone" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_saveSN">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_saveSN" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id sn" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_saveIM">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_saveIM" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id im" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_delSN">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_delSN" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_delIM">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_delIM" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_saveEmail">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_saveEmail" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id email" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_delEmail">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_delEmail" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getCountries">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getCountries" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getStates">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getStates" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="country_id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getCities">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getCities" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="state_id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_saveAddress">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_saveAddress" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id address" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_delAddress">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_delAddress" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="id" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getVcard">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getVcard" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getJotagConfig">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getJotagConfig" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_configureJotag">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_configureJotag" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="jotag display_name email address phone url im sn link_by_default" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getTypes">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getTypes" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="contact" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soap_getNetworks">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://projects.barros.ws/jotag/soap_getNetworks" style="rpc"/>
+      <wsdl:input xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="contact" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" parts="return" use="encoded" namespace="http://projects.barros.ws/jotag/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:message name="soap_getLanguagesRequest"/>
+  <wsdl:message name="soap_getLanguagesResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapLanguage"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getProfileRequest"/>
+  <wsdl:message name="soap_getProfileResponse">
+    <wsdl:part name="return" type="tns:SoapProfile"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getCurrentLanguageRequest"/>
+  <wsdl:message name="soap_getCurrentLanguageResponse">
+    <wsdl:part name="return" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_setCurrentLanguageRequest">
+    <wsdl:part name="language_id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_setCurrentLanguageResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveProfileRequest">
+    <wsdl:part name="profile" type="tns:SoapProfile"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveProfileResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_loginRequest">
+    <wsdl:part name="login" type="tns:SoapLogin"/>
+  </wsdl:message>
+  <wsdl:message name="soap_loginResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_logoutRequest"/>
+  <wsdl:message name="soap_logoutResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_lostPasswordRequest">
+    <wsdl:part name="email" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_lostPasswordResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_changePasswordRequest">
+    <wsdl:part name="password" type="tns:SoapPassword"/>
+  </wsdl:message>
+  <wsdl:message name="soap_changePasswordResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_signupRequest">
+    <wsdl:part name="signup" type="tns:SoapSignup"/>
+  </wsdl:message>
+  <wsdl:message name="soap_signupResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getJotagsRequest"/>
+  <wsdl:message name="soap_getJotagsResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapJotag"/>
+  </wsdl:message>
+  <wsdl:message name="soap_cancelJotagRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+    <wsdl:part name="confirm_jotag" type="xsd:string"/>
+    <wsdl:part name="agree" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_cancelJotagResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getQuickContactsRequest"/>
+  <wsdl:message name="soap_getQuickContactsResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapQuickContact"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delQuickContactsRequest">
+    <wsdl:part name="jotags" type="tns:ArrayOfstring"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delQuickContactsResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_addQuickContactRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_addQuickContactResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getInterestsRequest"/>
+  <wsdl:message name="soap_getInterestsResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapInterest"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delInterestRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+    <wsdl:part name="confirm_jotag" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delInterestResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_addInterestRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+    <wsdl:part name="confirm_jotag" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_addInterestResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getCreditsRequest"/>
+  <wsdl:message name="soap_getCreditsResponse">
+    <wsdl:part name="return" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_viewJotagRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+    <wsdl:part name="privacy" type="tns:SoapJotagPrivacy"/>
+  </wsdl:message>
+  <wsdl:message name="soap_viewJotagResponse">
+    <wsdl:part name="return" type="tns:SoapViewJotagResult"/>
+  </wsdl:message>
+  <wsdl:message name="soap_redeemRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+    <wsdl:part name="confirm_jotag" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_redeemResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getEmailsRequest"/>
+  <wsdl:message name="soap_getEmailsResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapEmailDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getEmailRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getEmailResponse">
+    <wsdl:part name="return" type="tns:SoapEmailDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getAddressesRequest"/>
+  <wsdl:message name="soap_getAddressesResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapAddressDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getAddressRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getAddressResponse">
+    <wsdl:part name="return" type="tns:SoapAddressDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getSNsRequest"/>
+  <wsdl:message name="soap_getSNsResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapSNDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getSNRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getSNResponse">
+    <wsdl:part name="return" type="tns:SoapSNDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getIMsRequest"/>
+  <wsdl:message name="soap_getIMsResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapIMDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getIMRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getIMResponse">
+    <wsdl:part name="return" type="tns:SoapIMDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getPhonesRequest"/>
+  <wsdl:message name="soap_getPhonesResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapPhoneDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getPhoneRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getPhoneResponse">
+    <wsdl:part name="return" type="tns:SoapPhoneDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getUrlsRequest"/>
+  <wsdl:message name="soap_getUrlsResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapUrlDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getUrlRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getUrlResponse">
+    <wsdl:part name="return" type="tns:SoapUrlDetails"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveUrlRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+    <wsdl:part name="url" type="tns:SoapUrl"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveUrlResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delUrlRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delUrlResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_savePhoneRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+    <wsdl:part name="phone" type="tns:SoapPhone"/>
+  </wsdl:message>
+  <wsdl:message name="soap_savePhoneResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delPhoneRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delPhoneResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveSNRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+    <wsdl:part name="sn" type="tns:SoapSN"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveSNResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveIMRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+    <wsdl:part name="im" type="tns:SoapIM"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveIMResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delSNRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delSNResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delIMRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delIMResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveEmailRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+    <wsdl:part name="email" type="tns:SoapEmail"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveEmailResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delEmailRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delEmailResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getCountriesRequest"/>
+  <wsdl:message name="soap_getCountriesResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapGeo"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getStatesRequest">
+    <wsdl:part name="country_id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getStatesResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapGeo"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getCitiesRequest">
+    <wsdl:part name="state_id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getCitiesResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapGeo"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveAddressRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+    <wsdl:part name="address" type="tns:SoapAddress"/>
+  </wsdl:message>
+  <wsdl:message name="soap_saveAddressResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delAddressRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="soap_delAddressResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getVcardRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getVcardResponse">
+    <wsdl:part name="return" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getJotagConfigRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getJotagConfigResponse">
+    <wsdl:part name="return" type="tns:SoapJotagConfig"/>
+  </wsdl:message>
+  <wsdl:message name="soap_configureJotagRequest">
+    <wsdl:part name="jotag" type="xsd:string"/>
+    <wsdl:part name="display_name" type="xsd:string"/>
+    <wsdl:part name="email" type="tns:ArrayOfinteger"/>
+    <wsdl:part name="address" type="tns:ArrayOfinteger"/>
+    <wsdl:part name="phone" type="tns:ArrayOfinteger"/>
+    <wsdl:part name="url" type="tns:ArrayOfinteger"/>
+    <wsdl:part name="im" type="tns:ArrayOfinteger"/>
+    <wsdl:part name="sn" type="tns:ArrayOfinteger"/>
+    <wsdl:part name="link_by_default" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_configureJotagResponse">
+    <wsdl:part name="return" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getTypesRequest">
+    <wsdl:part name="contact" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getTypesResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapType"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getNetworksRequest">
+    <wsdl:part name="contact" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="soap_getNetworksResponse">
+    <wsdl:part name="return" type="tns:ArrayOfSoapNetwork"/>
+  </wsdl:message>
+  <wsdl:service xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soapService">
+    <wsdl:port xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="soapPort" binding="tns:soapBinding">
+      <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://projects.barros.ws/jotag/soap.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

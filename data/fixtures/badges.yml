@@ -1,0 +1,18 @@
+Badge:
+  DROP_DOWN:
+    name:          Drop-down
+    template:      dropdown
+    is_default:    true
+    is_active:     true
+
+  DROP_DOWN2:
+    name:          Drop-down 2
+    template:      dropdown2
+    is_default:    false
+    is_active:     true
+
+  BOX:
+    name:          Box
+    template:      box
+    is_default:    false
+    is_active:     true
